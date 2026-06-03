@@ -35,16 +35,16 @@ graph LR
 *   **Acciones Concretas**:
     - [ ] Realizar demostraciones manuales de indexación y multiplicación de vectores y matrices estocásticas.
     - [ ] Resolver el ejercicio de la moneda sesgada con transición probabilística y determinista.
-    - [ ] Demostrar analíticamente por qué un estado conjunto con correlaciones (ej. v = [1/2, 0, 0, 1/2]^T) no es separable (u ⊗ w).
-    - [ ] Construir la matriz de CNOT clásica 4 x 4 y demostrar su indescomponibilidad.
+    - [ ] Demostrar analíticamente por qué un estado conjunto con correlaciones (ej. $v = [1/2, 0, 0, 1/2]^T$) no es separable ($u \otimes w$).
+    - [ ] Construir la matriz de CNOT clásica $4 \times 4$ y demostrar su indescomponibilidad.
 
 ### Día 3: Introducción a Sistemas Cuánticos (Mecánica Cuántica del Qubit)
 *   **Foco Teórico**: Amplitudes complejas, regla de Born, matrices unitarias, notación de Dirac (bra-ket), compuerta de Hadamard, interferencia, separabilidad y teorema de Gottesman-Knill.
 *   **Acciones Concretas**:
     - [ ] Practicar la normalización de vectores con amplitudes reales/complejas e identificar probabilidades.
-    - [ ] Demostrar analíticamente que H es unitaria (H^T H = I) y autoinversa (H^2 = I).
+    - [ ] Demostrar analíticamente que $H$ es unitaria ($H^T H = I$) y autoinversa ($H^2 = I$).
     - [ ] Evaluar el comportamiento de interferencia comparando Hadamard doble con/sin medición intermedia.
-    - [ ] Calcular productos internos y demostrar ortogonalidad de la base de Hadamard (< + | - > = 0).
+    - [ ] Calcular productos internos y demostrar ortogonalidad de la base de Hadamard ($\langle + | - \rangle = 0$).
 
 ---
 

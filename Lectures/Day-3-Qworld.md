@@ -32,11 +32,15 @@ A partir de esta definición del qubit como vector de amplitudes, la sesión con
 
 El sistema clásico de dos niveles se describe mediante un vector de probabilidad convexo:
 
-$$\hat{v} = p\begin{pmatrix}1\\0\end{pmatrix} + (1-p)\begin{pmatrix}0\\1\end{pmatrix} = \begin{pmatrix}p\\1-p\end{pmatrix}, \quad p \geq 0$$
+$$
+\hat{v} = p\begin{pmatrix}1\\0\end{pmatrix} + (1-p)\begin{pmatrix}0\\1\end{pmatrix} = \begin{pmatrix}p\\1-p\end{pmatrix}, \quad p \geq 0
+$$
 
 La transición al qubit consiste en sustituir los escalares probabilísticos por amplitudes $\alpha, \beta \in \mathbb{C}$:
 
-$$|\psi\rangle = \alpha\begin{pmatrix}1\\0\end{pmatrix} + \beta\begin{pmatrix}0\\1\end{pmatrix} = \begin{pmatrix}\alpha\\\beta\end{pmatrix}$$
+$$
+|\psi\rangle = \alpha\begin{pmatrix}1\\0\end{pmatrix} + \beta\begin{pmatrix}0\\1\end{pmatrix} = \begin{pmatrix}\alpha\\\beta\end{pmatrix}
+$$
 
 Las amplitudes no son probabilidades directamente. La conexión entre ambas la provee la **Regla de Born**: la probabilidad de observar el resultado $i$ es $|\alpha_i|^2$. Para amplitudes reales, esto equivale a $\alpha^2$ y $\beta^2$ respectivamente, con la restricción de normalización $\alpha^2 + \beta^2 = 1$.
 
@@ -50,11 +54,15 @@ Una transformación cuántica válida es una matriz $U$ tal que, aplicada a cual
 
 Las matrices que satisfacen esta condición son exactamente las **matrices unitarias**. Para entradas reales, equivalen a matrices ortogonales y satisfacen:
 
-$$U^T U = I \quad \Leftrightarrow \quad U^T = U^{-1}$$
+$$
+U^T U = I \quad \Leftrightarrow \quad U^T = U^{-1}
+$$
 
 En el caso complejo general:
 
-$$\bar{U}^T U = I$$
+$$
+\bar{U}^T U = I
+$$
 
 donde $\bar{U}^T$ denota la transpuesta conjugada (adjunta o hermitiana). Una consecuencia fundamental es que $U^{-1}$ existe siempre, lo que significa que toda evolución cuántica unitaria es **reversible**: la información no se pierde en el proceso. Esto distingue fundamentalmente a las transformaciones cuánticas de las matrices estocásticas clásicas, que en general no son invertibles.
 
@@ -64,19 +72,27 @@ Se introduce también la clase de matrices **hermitianas** ($\bar{H}^T = H$), cu
 
 La notación de Dirac no introduce nueva matemática, sino una forma más concisa y expresiva de escribir vectores y productos internos. Los vectores columna se denominan **kets**:
 
-$$|0\rangle = \begin{pmatrix}1\\0\end{pmatrix}, \qquad |1\rangle = \begin{pmatrix}0\\1\end{pmatrix}$$
+$$
+|0\rangle = \begin{pmatrix}1\\0\end{pmatrix}, \qquad |1\rangle = \begin{pmatrix}0\\1\end{pmatrix}
+$$
 
 Los vectores fila correspondientes (transpuestos conjugados) se denominan **bras**:
 
-$$\langle 0| = \begin{pmatrix}1 & 0\end{pmatrix}, \qquad \langle 1| = \begin{pmatrix}0 & 1\end{pmatrix}$$
+$$
+\langle 0| = \begin{pmatrix}1 & 0\end{pmatrix}, \qquad \langle 1| = \begin{pmatrix}0 & 1\end{pmatrix}
+$$
 
 Un estado arbitrario se escribe:
 
-$$|\psi\rangle = \alpha|0\rangle + \beta|1\rangle$$
+$$
+|\psi\rangle = \alpha|0\rangle + \beta|1\rangle
+$$
 
 El **producto interno** entre dos estados $|\phi\rangle = \gamma|0\rangle + \delta|1\rangle$ y $|\psi\rangle = \alpha|0\rangle + \beta|1\rangle$ se denota $\langle\phi|\psi\rangle$ y se calcula expandiendo:
 
-$$\langle\phi|\psi\rangle = (\bar{\gamma}\langle 0| + \bar{\delta}\langle 1|)(\alpha|0\rangle + \beta|1\rangle) = \bar{\gamma}\alpha\underbrace{\langle 0|0\rangle}_{1} + \bar{\gamma}\beta\underbrace{\langle 0|1\rangle}_{0} + \bar{\delta}\alpha\underbrace{\langle 1|0\rangle}_{0} + \bar{\delta}\beta\underbrace{\langle 1|1\rangle}_{1} = \bar{\gamma}\alpha + \bar{\delta}\beta$$
+$$
+\langle\phi|\psi\rangle = (\bar{\gamma}\langle 0| + \bar{\delta}\langle 1|)(\alpha|0\rangle + \beta|1\rangle) = \bar{\gamma}\alpha\underbrace{\langle 0|0\rangle}_{1} + \bar{\gamma}\beta\underbrace{\langle 0|1\rangle}_{0} + \bar{\delta}\alpha\underbrace{\langle 1|0\rangle}_{0} + \bar{\delta}\beta\underbrace{\langle 1|1\rangle}_{1} = \bar{\gamma}\alpha + \bar{\delta}\beta
+$$
 
 La simplificación se debe a la ortogonalidad de la base computacional. El conjunto $\{|0\rangle, |1\rangle\}$ se denomina **base computacional** o **base estándar**.
 
@@ -84,21 +100,29 @@ Para sistemas de $n$ qubits, la notación ket resulta especialmente conveniente 
 
 El producto tensorial de dos estados individuales se escribe naturalmente en ket notation:
 
-$$|\psi\rangle \otimes |\phi\rangle = (\alpha|0\rangle + \beta|1\rangle) \otimes (\gamma|0\rangle + \delta|1\rangle) = \alpha\gamma|00\rangle + \alpha\delta|01\rangle + \beta\gamma|10\rangle + \beta\delta|11\rangle$$
+$$
+|\psi\rangle \otimes |\phi\rangle = (\alpha|0\rangle + \beta|1\rangle) \otimes (\gamma|0\rangle + \delta|1\rangle) = \alpha\gamma|00\rangle + \alpha\delta|01\rangle + \beta\gamma|10\rangle + \beta\delta|11\rangle
+$$
 
 ### 3.4 Compuerta de Hadamard e interferencia cuántica
 
 La compuerta de Hadamard es la primera transformación cuántica concreta del bootcamp y sirve como herramienta para ilustrar un fenómeno esencialmente cuántico: la interferencia. Se define como:
 
-$$H = \frac{1}{\sqrt{2}}\begin{pmatrix}1 & 1\\1 & -1\end{pmatrix}$$
+$$
+H = \frac{1}{\sqrt{2}}\begin{pmatrix}1 & 1\\1 & -1\end{pmatrix}
+$$
 
 Se puede verificar que $H^T H = I$ (es simétrica y unitaria), y que $H^T = H$, por lo que $H^2 = I$: Hadamard es su propia inversa.
 
 Su acción sobre la base computacional produce la **base de Hadamard**:
 
-$$H|0\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix}1\\1\end{pmatrix} = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle) \equiv |+\rangle$$
+$$
+H|0\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix}1\\1\end{pmatrix} = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle) \equiv |+\rangle
+$$
 
-$$H|1\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix}1\\-1\end{pmatrix} = \frac{1}{\sqrt{2}}(|0\rangle - |1\rangle) \equiv |-\rangle$$
+$$
+H|1\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix}1\\-1\end{pmatrix} = \frac{1}{\sqrt{2}}(|0\rangle - |1\rangle) \equiv |-\rangle
+$$
 
 Ambos estados, $|+\rangle$ y $|-\rangle$, muestran la misma distribución de probabilidad al medirse: $\frac{1}{2}$ para $|0\rangle$ y $\frac{1}{2}$ para $|1\rangle$. El signo negativo es, aparentemente, invisible a la medición directa.
 
@@ -118,7 +142,9 @@ Para motivar la relevancia computacional del entrelazamiento (tema de la siguien
 
 Un estado de $n$ qubits es **separable** si puede escribirse como producto tensorial de estados individuales:
 
-$$|\psi\rangle = (\alpha_1|0\rangle + \beta_1|1\rangle) \otimes \cdots \otimes (\alpha_n|0\rangle + \beta_n|1\rangle)$$
+$$
+|\psi\rangle = (\alpha_1|0\rangle + \beta_1|1\rangle) \otimes \cdots \otimes (\alpha_n|0\rangle + \beta_n|1\rangle)
+$$
 
 En este caso, almacenar y actualizar el estado completo solo requiere mantener los $n$ valores $\alpha_i$ (los $\beta_i$ se deducen de la normalización). La memoria necesaria es $\mathcal{O}(n)$ en lugar de $\mathcal{O}(2^n)$. Cualquier circuito cuántico que mantenga la separabilidad a lo largo de toda su evolución puede simularse en tiempo polinomial clásicamente, es decir, pertenece a la clase P.
 

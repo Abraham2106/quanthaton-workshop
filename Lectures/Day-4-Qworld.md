@@ -35,7 +35,9 @@ El espacio de estados de un qubit real puede representarse como la mitad superio
 
 La compuerta de rotacion parametrizada por $\theta$:
 
-$$U(\theta) = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$$
+$$
+U(\theta) = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}
+$$
 
 toma $|0\rangle$ al estado $\cos\theta|0\rangle + \sin\theta|1\rangle$, girando el vector de estado un angulo $\theta$ en sentido antihorario. Su reversibilidad es inmediata: rotar por $-\theta$ invierte la operacion, confirmando que $U^T U = I$.
 
@@ -55,19 +57,25 @@ La sesion introduce el circuito canonico de entrelazamiento sobre dos qubits ini
 
 En $t_1$ se aplica $H \otimes I$, obteniendo:
 
-$$(H|0\rangle) \otimes |0\rangle = |+\rangle \otimes |0\rangle = \frac{1}{\sqrt{2}}(|00\rangle + |10\rangle)$$
+$$
+(H|0\rangle) \otimes |0\rangle = |+\rangle \otimes |0\rangle = \frac{1}{\sqrt{2}}(|00\rangle + |10\rangle)
+$$
 
 Este estado es separable: se puede escribir explicitamente como $|+\rangle \otimes |0\rangle$, lo que demuestra que la superposicion por si sola no implica entrelazamiento. En este punto el primer qubit esta en superposicion y el segundo permanece en $|0\rangle$, sin correlacion cuantica entre ellos.
 
 En $t_2$ se aplica CNOT con el primer qubit como control y el segundo como objetivo. La CNOT actua componente a componente: cuando el control es $|0\rangle$, el objetivo no cambia; cuando el control es $|1\rangle$, el objetivo se invierte. Por lo tanto:
 
-$$CNOT \cdot \frac{1}{\sqrt{2}}(|00\rangle + |10\rangle) = \frac{1}{\sqrt{2}}(|00\rangle + |11\rangle) = |\Phi^+\rangle$$
+$$
+CNOT \cdot \frac{1}{\sqrt{2}}(|00\rangle + |10\rangle) = \frac{1}{\sqrt{2}}(|00\rangle + |11\rangle) = |\Phi^+\rangle
+$$
 
 El resultado es el estado de Bell $|\Phi^+\rangle$, representado como el vector $\frac{1}{\sqrt{2}}(1,0,0,1)^T$ en la base computacional $\{|00\rangle, |01\rangle, |10\rangle, |11\rangle\}$. Este vector no puede escribirse como producto tensorial de dos estados individuales, lo que define formalmente el entrelazamiento: el estado es no separable.
 
 La sesion define la base de Bell completa, formada por los cuatro estados maximalmente entrelazados de dos qubits:
 
-$$|\Phi^\pm\rangle = \frac{1}{\sqrt{2}}(|00\rangle \pm |11\rangle), \qquad |\Psi^\pm\rangle = \frac{1}{\sqrt{2}}(|01\rangle \pm |10\rangle)$$
+$$
+|\Phi^\pm\rangle = \frac{1}{\sqrt{2}}(|00\rangle \pm |11\rangle), \qquad |\Psi^\pm\rangle = \frac{1}{\sqrt{2}}(|01\rangle \pm |10\rangle)
+$$
 
 Estos cuatro estados forman una base ortonormal para el espacio de Hilbert de dos qubits y representan la maxima cantidad de entrelazamiento posible. El estado de Bell es la unidad de recurso de entrelazamiento en protocolos de informacion cuantica, a veces denominado ebit. Se senala que los estados de Bell son mas relevantes en informacion cuantica (teleportacion, distribucion de clave cuantica) que en computacion cuantica pura, donde el entrelazamiento se genera y explota de maneras mas generales.
 
@@ -81,7 +89,9 @@ El argumento tipico en divulgacion dice que si Alice y Bob comparten el estado $
 
 La sesion refuta este argumento mediante una analogia clasica exactamente equivalente. Supongase que un preparador lanza una moneda equilibrada: si sale cara, coloca un papel rojo en dos sobres; si sale cruz, coloca un papel verde en ambos. Alice y Bob toman un sobre cada uno y van a planetas distintos sin abrir el sobre. Cuando Alice abre el suyo y ve el papel rojo, "instantaneamente" sabe que Bob tiene papel rojo. Este experimento se describe matematicamente con el vector de probabilidad clasico:
 
-$$\hat{V} = \frac{1}{2}\begin{pmatrix}1\\0\\0\\1\end{pmatrix}$$
+$$
+\hat{V} = \frac{1}{2}\begin{pmatrix}1\\0\\0\\1\end{pmatrix}
+$$
 
 No ocurre ninguna comunicacion. La "certeza instantanea" es simplemente la realizacion de una correlacion perfecta generada en el momento de la preparacion. Este mismo argumento, aplicado al estado de Bell, tampoco implica comunicacion cuantica: la correlacion es real, pero no es exclusivamente cuantica.
 
@@ -117,14 +127,20 @@ La evaluacion en $t_2$ produce la siguiente transformacion: todas las componente
 
 Tras aplicar $H$ al primer qubit en $t_3$ y expandir todos los terminos, recogiendo por estado base, el estado final toma la forma (con un factor global de $\frac{1}{2}$):
 
-$$\frac{1}{2}\Big[2\alpha\gamma|000\rangle + 2\alpha\delta|001\rangle + \beta(\gamma+\delta)|010\rangle + \beta(\gamma+\delta)|011\rangle$$
-$$+ \beta(\gamma-\delta)|110\rangle + \beta(\delta-\gamma)|111\rangle\Big]$$
+$$
+\frac{1}{2}\Big[2\alpha\gamma|000\rangle + 2\alpha\delta|001\rangle + \beta(\gamma+\delta)|010\rangle + \beta(\gamma+\delta)|011\rangle
+$$
+$$
++ \beta(\gamma-\delta)|110\rangle + \beta(\delta-\gamma)|111\rangle\Big]
+$$
 
 Los estados $|100\rangle$ y $|101\rangle$ tienen amplitud cero. La razon es la cancelacion destructiva: la expansion del termino $\alpha|10\rangle$ procedente de uno de los Hadamard produce un $+\alpha|100\rangle$ y un $-\alpha|100\rangle$ que se anulan mutuamente. Esta cancelacion es imposible en la aritmetica clasica de probabilidades, donde todas las entradas son no negativas. Es el mecanismo de interferencia destructiva, analogo a la interferencia de ondas en fisica clasica, operando sobre amplitudes de probabilidad.
 
 La probabilidad de medir el primer qubit en $|1\rangle$ resulta ser:
 
-$$\eta = \frac{1}{2}\beta^2(\delta-\gamma)^2$$
+$$
+\eta = \frac{1}{2}\beta^2(\delta-\gamma)^2
+$$
 
 Condicionado a que el primer qubit mida $|1\rangle$, los unicos estados compatibles son $|110\rangle$ y $|111\rangle$, ambos con el segundo qubit en $|1\rangle$. Por tanto, el segundo qubit se encuentra en $|1\rangle$ con certeza absoluta en ese caso, demostrando el efecto del entrelazamiento sobre las probabilidades condicionales.
 

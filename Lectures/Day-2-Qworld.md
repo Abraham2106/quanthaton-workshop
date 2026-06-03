@@ -42,13 +42,17 @@ La generalización al caso de $n$ bits como entrada y 1 bit como salida —es de
 
 Cuando el estado del sistema no se conoce con certeza, se representa mediante un vector de probabilidad. Para un bit clásico en el estado $x$ con probabilidades $p$ y $1-p$:
 
-$$\hat{v} = \begin{pmatrix} p \\ 1-p \end{pmatrix}, \quad p \in [0, 1]$$
+$$
+\hat{v} = \begin{pmatrix} p \\ 1-p \end{pmatrix}, \quad p \in [0, 1]
+$$
 
 donde la componente $v_\sigma$ indica la probabilidad de que el sistema se encuentre en el estado etiquetado con $\sigma$. Esta representación es abstracta: cuando se observa el sistema, no se "ve" el vector $\hat{v}$, sino que se obtiene un resultado concreto $\sigma \in \Sigma$ con probabilidad $v_\sigma$. Este punto se subraya especialmente porque tendrá un análogo profundo en el formalismo cuántico, donde el estado tampoco es directamente observable.
 
 Todo vector de probabilidad de dimensión 2 puede escribirse como combinación convexa de los dos vectores deterministas $\mathbf{e}_0 = (1,0)^\top$ y $\mathbf{e}_1 = (0,1)^\top$:
 
-$$\hat{v} = p \begin{pmatrix} 1 \\ 0 \end{pmatrix} + (1-p) \begin{pmatrix} 0 \\ 1 \end{pmatrix}$$
+$$
+\hat{v} = p \begin{pmatrix} 1 \\ 0 \end{pmatrix} + (1-p) \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+$$
 
 Una combinación convexa es una combinación lineal en la que los coeficientes son no negativos y suman 1, es decir, son ellos mismos probabilidades. Geométricamente, el espacio de todos los estados probabilísticos posibles de un bit clásico es el segmento de recta que une los dos puntos deterministas $\mathbf{e}_0$ y $\mathbf{e}_1$ en $\mathbb{R}^2$. El parámetro $p$ recorre este segmento, y la geometría del espacio de estados clásico es, por tanto, estrictamente unidimensional. Esta imagen geométrica se anticipa como punto de contraste con el estado cuántico, cuyo espacio de estados es mucho más rico.
 
@@ -63,7 +67,9 @@ La interpretación de cada entrada $M_{ij}$ es la de una probabilidad condiciona
 
 Para el caso de un bit clásico, las cuatro funciones deterministas se corresponden con cuatro matrices estocásticas $2\times 2$:
 
-$$A_1 = \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}, \quad A_2 = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}, \quad A_3 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad A_4 = \begin{pmatrix} 0 & 0 \\ 1 & 1 \end{pmatrix}$$
+$$
+A_1 = \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}, \quad A_2 = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}, \quad A_3 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad A_4 = \begin{pmatrix} 0 & 0 \\ 1 & 1 \end{pmatrix}
+$$
 
 correspondientes a constante-0, identidad, negación y constante-1, respectivamente. Cualquier matriz estocástica se puede obtener como combinación convexa de estas cuatro matrices deterministas, lo que proporciona una descripción alternativa del conjunto de transformaciones probabilísticas válidas.
 
@@ -75,7 +81,9 @@ Como ejercicio integrador, se analiza el siguiente protocolo sobre una moneda co
 
 La matriz de transformación del segundo paso es:
 
-$$M = \begin{pmatrix} 0 & p \\ 1 & q \end{pmatrix}$$
+$$
+M = \begin{pmatrix} 0 & p \\ 1 & q \end{pmatrix}
+$$
 
 donde la primera columna corresponde al caso "estado=cruz" (transición determinista a cara: probabilidad 1 de pasar a cara, 0 de permanecer en cruz) y la segunda al caso "estado=cara" (relanzamiento con probabilidades $p$ de cruz y $q$ de cara). Aplicando $M$ al vector de estado inicial $\hat{v} = (p, q)^\top$, el estado final resulta ser $(pq,\; p + q^2)^\top$, obtenido por multiplicación matricial estándar.
 
@@ -83,7 +91,9 @@ donde la primera columna corresponde al caso "estado=cruz" (transición determin
 
 Para dos sistemas independientes con vectores de probabilidad $\hat{u} = (p, q)^\top$ y $\hat{w} = (r, s)^\top$, el estado del sistema compuesto se obtiene mediante el producto tensorial:
 
-$$\hat{u} \otimes \hat{w} = \begin{pmatrix} pr \\ ps \\ qr \\ qs \end{pmatrix}$$
+$$
+\hat{u} \otimes \hat{w} = \begin{pmatrix} pr \\ ps \\ qr \\ qs \end{pmatrix}
+$$
 
 donde las entradas representan las probabilidades de los cuatro eventos conjuntos posibles: $\{00, 01, 10, 11\}$. El vector resultante tiene dimensión $2^2 = 4$ para dos bits, y $2^n$ en general para $n$ bits, lo que refleja el crecimiento exponencial del espacio de estados —un fenómeno que ya ocurre en el caso clásico y no es exclusivo de la mecánica cuántica.
 
@@ -96,7 +106,9 @@ Lo mismo se aplica a las transformaciones: no toda matriz estocástica $4 \times
 
 La matriz resultante es:
 
-$$\text{CNOT} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix}$$
+$$
+\text{CNOT} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix}
+$$
 
 Esta matriz no admite descomposición $A \otimes B$ para matrices $2\times 2$ porque la transformación genera correlaciones entre $x$ e $y$: el resultado en el bit objetivo depende del estado del bit de control, de modo que no puede describirse como dos operaciones independientes sobre cada subsistema.
 

@@ -70,8 +70,8 @@ Para cada lección del taller, seguir estos 4 pasos sistemáticos:
 
 Para mantener el orden del workshop, se establece el siguiente estándar de nombres de archivos:
 
-*   **Notas Teóricas**: `Notes_Day[X]_[Short_Topic].md`
-    *   *Ejemplo*: [Notes_Day2_Classical_Systems.md](Lectures/Day-1-Qworld.md)
+*   **Notas Teóricas**: `Day-[X]-[tag].md`
+    *   *Ejemplo*: [Day-1-Qworld.md](Lectures/Day-1-Qworld.md)
 *   **Notebooks de Laboratorio**: `Lab[X]_[Topic_Name].ipynb`
     *   *Ejemplo*: `Lab1_Quantum_States.ipynb`
 *   **Cuestionarios / Prácticas**: `Quiz[X]_[Topic_Name].md`

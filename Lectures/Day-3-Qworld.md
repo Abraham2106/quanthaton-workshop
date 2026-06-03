@@ -33,20 +33,20 @@ A partir de esta definición del qubit como vector de amplitudes, la sesión con
 El sistema clásico de dos niveles se describe mediante un vector de probabilidad convexo:
 
 $$
-\hat{v} = p\begin{pmatrix}1\\0\end{pmatrix} + (1-p)\begin{pmatrix}0\\1\end{pmatrix} = \begin{pmatrix}p\\1-p\end{pmatrix}, \quad p \geq 0
+\hat{v} = p\begin{pmatrix}1\\\0\end{pmatrix} + (1-p)\begin{pmatrix}0\\\1\end{pmatrix} = \begin{pmatrix}p\\\1-p\end{pmatrix}, \quad p \geq 0
 $$
 
 La transición al qubit consiste en sustituir los escalares probabilísticos por amplitudes $\alpha, \beta \in \mathbb{C}$:
 
 $$
-|\psi\rangle = \alpha\begin{pmatrix}1\\0\end{pmatrix} + \beta\begin{pmatrix}0\\1\end{pmatrix} = \begin{pmatrix}\alpha\\\beta\end{pmatrix}
+|\psi\rangle = \alpha\begin{pmatrix}1\\\0\end{pmatrix} + \beta\begin{pmatrix}0\\\1\end{pmatrix} = \begin{pmatrix}\alpha\\\beta\end{pmatrix}
 $$
 
 Las amplitudes no son probabilidades directamente. La conexión entre ambas la provee la **Regla de Born**: la probabilidad de observar el resultado $i$ es $|\alpha_i|^2$. Para amplitudes reales, esto equivale a $\alpha^2$ y $\beta^2$ respectivamente, con la restricción de normalización $\alpha^2 + \beta^2 = 1$.
 
 Esta restricción admite una parametrización trigonométrica natural: $\alpha = \cos\theta$, $\beta = \sin\theta$, con $\theta \in [0, 2\pi)$, lo que representa geométricamente al qubit como un vector unitario en el círculo unitario. La identidad $\cos^2\theta + \sin^2\theta = 1$ garantiza automáticamente la normalización. Se menciona que cuando se levantan las restricciones a números complejos, la visualización completa del qubit corresponde a la esfera de Bloch en tres dimensiones, aunque su uso explícito queda fuera del alcance de la mayoría de las sesiones del bootcamp.
 
-Un punto epistemológico relevante que se desarrolla con cuidado: la superposición no debe interpretarse ingenuamente como "el sistema está en los estados 0 y 1 al mismo tiempo". El ponente argumenta que tampoco interpretamos el vector de probabilidad clásico $\begin{pmatrix}p\\1-p\end{pmatrix}$ como que el sistema ocupa simultáneamente dos estados, sino como una descripción matemática del conocimiento incompleto. La superposición cuántica es simplemente una descripción en un espacio más rico, cuyas consecuencias físicas distintas se revelan a través del comportamiento en experimentos específicos, no a través de interpretaciones ontológicas directas.
+Un punto epistemológico relevante que se desarrolla con cuidado: la superposición no debe interpretarse ingenuamente como "el sistema está en los estados 0 y 1 al mismo tiempo". El ponente argumenta que tampoco interpretamos el vector de probabilidad clásico $\begin{pmatrix}p\\\1-p\end{pmatrix}$ como que el sistema ocupa simultáneamente dos estados, sino como una descripción matemática del conocimiento incompleto. La superposición cuántica es simplemente una descripción en un espacio más rico, cuyas consecuencias físicas distintas se revelan a través del comportamiento en experimentos específicos, no a través de interpretaciones ontológicas directas.
 
 ### 3.2 Transformaciones cuánticas y matrices unitarias
 
@@ -73,7 +73,7 @@ Se introduce también la clase de matrices **hermitianas** ($\bar{H}^T = H$), cu
 La notación de Dirac no introduce nueva matemática, sino una forma más concisa y expresiva de escribir vectores y productos internos. Los vectores columna se denominan **kets**:
 
 $$
-|0\rangle = \begin{pmatrix}1\\0\end{pmatrix}, \qquad |1\rangle = \begin{pmatrix}0\\1\end{pmatrix}
+|0\rangle = \begin{pmatrix}1\\\0\end{pmatrix}, \qquad |1\rangle = \begin{pmatrix}0\\\1\end{pmatrix}
 $$
 
 Los vectores fila correspondientes (transpuestos conjugados) se denominan **bras**:
@@ -109,7 +109,7 @@ $$
 La compuerta de Hadamard es la primera transformación cuántica concreta del bootcamp y sirve como herramienta para ilustrar un fenómeno esencialmente cuántico: la interferencia. Se define como:
 
 $$
-H = \frac{1}{\sqrt{2}}\begin{pmatrix}1 & 1\\1 & -1\end{pmatrix}
+H = \frac{1}{\sqrt{2}}\begin{pmatrix}1 & 1\\\1 & -1\end{pmatrix}
 $$
 
 Se puede verificar que $H^T H = I$ (es simétrica y unitaria), y que $H^T = H$, por lo que $H^2 = I$: Hadamard es su propia inversa.
@@ -117,18 +117,18 @@ Se puede verificar que $H^T H = I$ (es simétrica y unitaria), y que $H^T = H$, 
 Su acción sobre la base computacional produce la **base de Hadamard**:
 
 $$
-H|0\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix}1\\1\end{pmatrix} = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle) \equiv |+\rangle
+H|0\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix}1\\\1\end{pmatrix} = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle) \equiv |+\rangle
 $$
 
 $$
-H|1\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix}1\\-1\end{pmatrix} = \frac{1}{\sqrt{2}}(|0\rangle - |1\rangle) \equiv |-\rangle
+H|1\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix}1\\\-1\end{pmatrix} = \frac{1}{\sqrt{2}}(|0\rangle - |1\rangle) \equiv |-\rangle
 $$
 
 Ambos estados, $|+\rangle$ y $|-\rangle$, muestran la misma distribución de probabilidad al medirse: $\frac{1}{2}$ para $|0\rangle$ y $\frac{1}{2}$ para $|1\rangle$. El signo negativo es, aparentemente, invisible a la medición directa.
 
-La distinción con respecto al caso clásico se hace explícita mediante la comparación con la moneda justa clásica $F = \frac{1}{2}\begin{pmatrix}1&1\\1&1\end{pmatrix}$:
+La distinción con respecto al caso clásico se hace explícita mediante la comparación con la moneda justa clásica $F = \frac{1}{2}\begin{pmatrix}1&1\\\1&1\end{pmatrix}$:
 
-**Caso clásico:** $F$ aplicado a cualquier vector de probabilidad siempre produce $\frac{1}{2}\begin{pmatrix}1\\1\end{pmatrix}$. Aplicar $F$ dos veces en secuencia (con o sin observación intermedia) siempre devuelve la misma distribución uniforme. La observación intermedia no tiene impacto en el resultado final.
+**Caso clásico:** $F$ aplicado a cualquier vector de probabilidad siempre produce $\frac{1}{2}\begin{pmatrix}1\\\1\end{pmatrix}$. Aplicar $F$ dos veces en secuencia (con o sin observación intermedia) siempre devuelve la misma distribución uniforme. La observación intermedia no tiene impacto en el resultado final.
 
 **Caso cuántico sin medición intermedia:** $H \circ H = I$. Aplicar Hadamard dos veces seguidas produce un comportamiento completamente determinista: $|0\rangle \to |+\rangle \to |0\rangle$ y $|1\rangle \to |-\rangle \to |1\rangle$. Esta cancelación ocurre porque la amplitud negativa de $|-\rangle$ permite que los términos se cancelen constructiva y destructivamente (interferencia). Este es el resultado cualitativamente distinto del caso clásico.
 
@@ -154,7 +154,7 @@ El razonamiento inverso es igualmente importante: si existe un algoritmo cuánti
 
 ## 4. Puntos de Confusión y Casos de Esquina
 
-**La superposición como "estar en dos estados al mismo tiempo."** Esta es la fuente de confusión más recurrente de la sesión. El ponente la aborda con cuidado: el vector de amplitudes $\alpha|0\rangle + \beta|1\rangle$ no implica necesariamente que el sistema esté simultáneamente en $|0\rangle$ y $|1\rangle$, del mismo modo que el vector de probabilidad clásico $\begin{pmatrix}p\\1-p\end{pmatrix}$ no implica que la moneda esté en cara y cruz al mismo tiempo. La superposición es una descripción matemática que vive en un espacio más rico; sus consecuencias físicas distintivas se manifiestan solo en escenarios específicos como la interferencia, no en la interpretación ontológica directa del formalismo.
+**La superposición como "estar en dos estados al mismo tiempo."** Esta es la fuente de confusión más recurrente de la sesión. El ponente la aborda con cuidado: el vector de amplitudes $\alpha|0\rangle + \beta|1\rangle$ no implica necesariamente que el sistema esté simultáneamente en $|0\rangle$ y $|1\rangle$, del mismo modo que el vector de probabilidad clásico $\begin{pmatrix}p\\\1-p\end{pmatrix}$ no implica que la moneda esté en cara y cruz al mismo tiempo. La superposición es una descripción matemática que vive en un espacio más rico; sus consecuencias físicas distintivas se manifiestan solo en escenarios específicos como la interferencia, no en la interpretación ontológica directa del formalismo.
 
 **El signo negativo en las amplitudes y su visibilidad.** Una fuente de confusión es que $|+\rangle$ y $|-\rangle$ producen la misma distribución de probabilidad al medirse directamente ($\frac{1}{2}$ para 0 y $\frac{1}{2}$ para 1). Esto podría llevar a pensar que el signo negativo es irrelevante. No lo es: el signo negativo es el mecanismo que permite la interferencia destructiva y constructiva, visible cuando los estados evolucionan sin medición intermedia (como en $H \circ H = I$). La medición destruye esta coherencia.
 
@@ -170,7 +170,7 @@ El razonamiento inverso es igualmente importante: si existe un algoritmo cuánti
 
 1. Dado el estado $|\psi\rangle = \frac{\sqrt{3}}{2}|0\rangle - \frac{1}{2}|1\rangle$, verifica que está normalizado y calcula la probabilidad de obtener el resultado 1 al medirlo.
 
-2. Demuestra que la compuerta de Hadamard $H = \frac{1}{\sqrt{2}}\begin{pmatrix}1&1\\1&-1\end{pmatrix}$ satisface $H^T H = I$ y concluye que es unitaria. Luego calcula $H^2$ y explica el resultado.
+2. Demuestra que la compuerta de Hadamard $H = \frac{1}{\sqrt{2}}\begin{pmatrix}1&1\\\1&-1\end{pmatrix}$ satisface $H^T H = I$ y concluye que es unitaria. Luego calcula $H^2$ y explica el resultado.
 
 3. Explica la diferencia entre el estado $|+\rangle = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle)$ y el estado $|-\rangle = \frac{1}{\sqrt{2}}(|0\rangle - |1\rangle)$: ¿cuándo son indistinguibles experimentalmente y cuándo no?
 

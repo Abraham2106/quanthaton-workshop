@@ -36,16 +36,16 @@ El espacio de estados de un qubit real puede representarse como la mitad superio
 La compuerta de rotacion parametrizada por $\theta$:
 
 $$
-U(\theta) = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}
+U(\theta) = \begin{pmatrix} \cos\theta & -\sin\theta \\\ \sin\theta & \cos\theta \end{pmatrix}
 $$
 
 toma $|0\rangle$ al estado $\cos\theta|0\rangle + \sin\theta|1\rangle$, girando el vector de estado un angulo $\theta$ en sentido antihorario. Su reversibilidad es inmediata: rotar por $-\theta$ invierte la operacion, confirmando que $U^T U = I$.
 
-La compuerta $X = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$ es geometricamente una reflexion respecto a la recta $y = x$, lo que intercambia $|0\rangle \leftrightarrow |1\rangle$. Por linealidad, $X(\cos\theta|0\rangle + \sin\theta|1\rangle) = \sin\theta|0\rangle + \cos\theta|1\rangle$. Esta compuerta es clasica y cuantica simultaneamente: actua identicamente sobre vectores de probabilidad clasicos y sobre estados cuanticos, siendo el NOT cuantico.
+La compuerta $X = \begin{pmatrix} 0 & 1 \\\ 1 & 0 \end{pmatrix}$ es geometricamente una reflexion respecto a la recta $y = x$, lo que intercambia $|0\rangle \leftrightarrow |1\rangle$. Por linealidad, $X(\cos\theta|0\rangle + \sin\theta|1\rangle) = \sin\theta|0\rangle + \cos\theta|1\rangle$. Esta compuerta es clasica y cuantica simultaneamente: actua identicamente sobre vectores de probabilidad clasicos y sobre estados cuanticos, siendo el NOT cuantico.
 
-La compuerta $Z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$ es una reflexion respecto al eje horizontal ($x$). Deja $|0\rangle$ invariante y envia $|1\rangle \to -|1\rangle$. Este signo negativo no tiene analogo clasico (las probabilidades no admiten valores negativos), por lo que $Z$ es una compuerta exclusivamente cuantica.
+La compuerta $Z = \begin{pmatrix} 1 & 0 \\\ 0 & -1 \end{pmatrix}$ es una reflexion respecto al eje horizontal ($x$). Deja $|0\rangle$ invariante y envia $|1\rangle \to -|1\rangle$. Este signo negativo no tiene analogo clasico (las probabilidades no admiten valores negativos), por lo que $Z$ es una compuerta exclusivamente cuantica.
 
-La compuerta Hadamard $H = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$ es una reflexion respecto al eje que forma $\pi/8$ (22.5 grados) con el eje $x$. Sus efectos sobre la base estandar son $H|0\rangle = |+\rangle$ y $H|1\rangle = |-\rangle$, donde $|+\rangle = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle)$ y $|-\rangle = \frac{1}{\sqrt{2}}(|0\rangle - |1\rangle)$ forman la base de Hadamard (o base de signos). Los estados $|+\rangle$ y $|-\rangle$ son ortogonales y residen en cuadrantes opuestos del circulo, separados por 90 grados. Una propiedad crucial es que $H$ es autoinversa: $H^2 = I$, lo que significa que aplicar $H$ dos veces consecutivas sin ninguna operacion intermedia cancela el efecto neto.
+La compuerta Hadamard $H = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\\ 1 & -1 \end{pmatrix}$ es una reflexion respecto al eje que forma $\pi/8$ (22.5 grados) con el eje $x$. Sus efectos sobre la base estandar son $H|0\rangle = |+\rangle$ y $H|1\rangle = |-\rangle$, donde $|+\rangle = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle)$ y $|-\rangle = \frac{1}{\sqrt{2}}(|0\rangle - |1\rangle)$ forman la base de Hadamard (o base de signos). Los estados $|+\rangle$ y $|-\rangle$ son ortogonales y residen en cuadrantes opuestos del circulo, separados por 90 grados. Una propiedad crucial es que $H$ es autoinversa: $H^2 = I$, lo que significa que aplicar $H$ dos veces consecutivas sin ninguna operacion intermedia cancela el efecto neto.
 
 Esta representacion geometrica solo es completa para un qubit. Para dos o mas qubits no existe una visualizacion igualmente elegante y exhaustiva; la esfera de Bloch proporciona la generalizacion correcta para un qubit en el caso complejo, pero no tiene un analogo directo para sistemas multipartitos.
 
@@ -90,7 +90,7 @@ El argumento tipico en divulgacion dice que si Alice y Bob comparten el estado $
 La sesion refuta este argumento mediante una analogia clasica exactamente equivalente. Supongase que un preparador lanza una moneda equilibrada: si sale cara, coloca un papel rojo en dos sobres; si sale cruz, coloca un papel verde en ambos. Alice y Bob toman un sobre cada uno y van a planetas distintos sin abrir el sobre. Cuando Alice abre el suyo y ve el papel rojo, "instantaneamente" sabe que Bob tiene papel rojo. Este experimento se describe matematicamente con el vector de probabilidad clasico:
 
 $$
-\hat{V} = \frac{1}{2}\begin{pmatrix}1\\0\\0\\1\end{pmatrix}
+\hat{V} = \frac{1}{2}\begin{pmatrix}1\\\0\\\0\\\1\end{pmatrix}
 $$
 
 No ocurre ninguna comunicacion. La "certeza instantanea" es simplemente la realizacion de una correlacion perfecta generada en el momento de la preparacion. Este mismo argumento, aplicado al estado de Bell, tampoco implica comunicacion cuantica: la correlacion es real, pero no es exclusivamente cuantica.

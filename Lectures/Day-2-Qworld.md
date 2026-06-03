@@ -136,7 +136,11 @@ Esta matriz no admite descomposición $A \otimes B$ para matrices $2\times 2$ po
 
 **Pregunta 2.** ¿Qué dos propiedades debe satisfacer una matriz para ser una matriz estocástica? ¿Cómo se interpreta cada entrada $M_{ij}$ en términos de probabilidades condicionales?
 
-**Pregunta 3.** Dado el vector de probabilidad $\hat{v} = \begin{pmatrix} 1/2 \\\ 0 \\\ 0 \\\ 1/2 \end{pmatrix}$, ¿puede escribirse como $\hat{u} \otimes \hat{w}$ para vectores de probabilidad de dimensión 2? Demuestre por qué sí o por qué no.
+$$
+\hat{v} = \begin{pmatrix} 1/2 \\\\ 0 \\\\ 0 \\\\ 1/2 \end{pmatrix}
+$$
+
+¿puede escribirse como $\hat{u} \otimes \hat{w}$ para vectores de probabilidad de dimensión 2? Demuestre por qué sí o por qué no.
 
 **Pregunta 4.** Describa la regla de transformación de la operación CNOT sobre los estados de dos bits $\{00, 01, 10, 11\}$ y construya su matriz $4\times 4$. ¿Por qué esta matriz no admite descomposición tensorial $A \otimes B$?
 

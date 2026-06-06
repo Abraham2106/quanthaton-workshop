@@ -41,22 +41,34 @@ This session completes the treatment of Grover's algorithm and then repurposes i
 ### 3.1 Grover as Inversion Around the Mean
 
 The session begins by finishing an idea left open in the previous session: an alternative interpretation of Grover's algorithm. Recall the three steps — prepare $|0^n\rangle$ and apply $H^{\otimes n}$; apply the Grover operator $G = -H^{\otimes n} Z_0 H^{\otimes n} Z_f$ some $k$ times; then measure. The previous session treated the work step as a *rotation* in the two-dimensional subspace spanned by the good and bad strings. Here the same step is recast algebraically by isolating the transformation
-$$U = -H^{\otimes n} Z_0 H^{\otimes n} = 2|h\rangle\langle h| - I,$$
+$$
+U = -H^{\otimes n} Z_0 H^{\otimes n} = 2|h\rangle\langle h| - I,
+$$
 so that $G = U Z_f$. The key bookkeeping subtlety is that the overall minus sign — previously absorbed together with $Z_f$ — is now kept inside $U$. In Dirac form $U$ is the reflection $2|h\rangle\langle h| - I$, and in matrix form it is the all-ones matrix scaled by $2/N$ minus the identity:
-$$U = \frac{2}{N}\begin{pmatrix}1 & \cdots & 1\\ \vdots & \ddots & \vdots\\ 1 & \cdots & 1\end{pmatrix} - I.$$
+$$
+U = \frac{2}{N}\begin{pmatrix}1 & \cdots & 1\\ \vdots & \ddots & \vdots\\ 1 & \cdots & 1\end{pmatrix} - I.
+$$
 
 Applying $U$ to an arbitrary state $\sum_x \alpha_x |x\rangle$ and pulling $U$ inside the sum, the all-ones matrix maps each $|x\rangle$ to the mean of all amplitudes while the identity returns $\alpha_x$ itself, giving the amplitude update
-$$U\left(\sum_x \alpha_x |x\rangle\right) = \sum_x (2\mu - \alpha_x)|x\rangle, \qquad \mu = \frac{1}{N}\sum_x \alpha_x.$$
+$$
+U\left(\sum_x \alpha_x |x\rangle\right) = \sum_x (2\mu - \alpha_x)|x\rangle, \qquad \mu = \frac{1}{N}\sum_x \alpha_x.
+$$
 This is why the operation is called *inversion around the mean*: every amplitude is reflected through $\mu$. The visualization makes the dynamics concrete. After step one all $2^n$ amplitudes sit uniformly at $1/\sqrt{N}$ (one bar, the target $x^*$, highlighted). Applying $Z_f$ flips the marked amplitude's sign:
-$$Z_f|x^*\rangle = (-1)^{f(x^*)}|x^*\rangle = -|x^*\rangle.$$
+$$
+Z_f|x^*\rangle = (-1)^{f(x^*)}|x^*\rangle = -|x^*\rangle.
+$$
 The mean $\bar{\alpha}$ then drops slightly below $1/\sqrt{N}$, but with a single marked item among many it is still well approximated by $1/\sqrt{N}$. The subsequent inversion lifts the marked amplitude:
-$$2\mu - \alpha_{x^*} = 2\left(\tfrac{1}{\sqrt{N}}\right) - \left(-\tfrac{1}{\sqrt{N}}\right) \approx \frac{3}{\sqrt{N}},$$
+$$
+2\mu - \alpha_{x^*} = 2\left(\tfrac{1}{\sqrt{N}}\right) - \left(-\tfrac{1}{\sqrt{N}}\right) \approx \frac{3}{\sqrt{N}},
+$$
 and a further iteration would carry it to $5/\sqrt{N}$, and so on, until the numerator reaches roughly $\sqrt{N}$ and the success probability is near one. Crucially, the approximation $\mu \approx 1/\sqrt{N}$ breaks once most amplitude has concentrated on $x^*$; past the optimum the amplitude begins to *shrink* again — the amplitude-amplification mirror of over-rotating past the target in the rotation picture. Identifying the correct number of iterations is therefore essential. *(See §6 for the closed-form optimal iteration count from the literature.)*
 
 ### 3.2 Implementing the Diffusion Operator
 
 Before moving to applications, the session opens the two black boxes that a real run of Grover must physically implement: the oracle and the diffusion operator $-H^{\otimes n} Z_0 H^{\otimes n}$ (equivalently, up to sign conventions, $I - 2|0^n\rangle\langle 0^n|$). The diffusion operator is built by sandwiching the $Z_0$ reflection between Hadamard layers, where
-$$Z_0|x\rangle = \begin{cases} -|x\rangle & \text{if } x = 0^n \\ |x\rangle & \text{otherwise.}\end{cases}$$
+$$
+Z_0|x\rangle = \begin{cases} -|x\rangle & \text{if } x = 0^n \\ |x\rangle & \text{otherwise.}\end{cases}
+$$
 The circuit realizing $Z_0$ is a three-layer construction: a layer of Pauli-$X$ gates on every qubit, a multi-controlled-$Z$, then another layer of $X$ gates. The argument that this implements $Z_0$ proceeds by cases. When the incoming string is $0^n$, the first $X$ layer flips every qubit to $1$, so all controls of the multi-controlled-$Z$ are satisfied and the $Z$ fires on the (now $|1\rangle$) target; since $Z|1\rangle = -|1\rangle$, exactly the desired global $-1$ phase is acquired, and the final $X$ layer restores the original $0^n$. For any other string, at least one qubit is $0$ before the controlled-$Z$: if it is a control, $Z$ never fires and the $X$ layers cancel (identity); if it happens to be the target, then $Z|0\rangle = |0\rangle$ leaves the state unchanged. Either way non-zero strings pass through untouched, which is precisely $Z_0$. Wrapping this in Hadamards yields the diffusion operator — an instance of a multi-controlled-operation trick that recurs throughout quantum circuit design.
 
 ### 3.3 Max-Cut, Its Decision Version, and the Decision-to-Optimization Reduction
@@ -117,7 +129,9 @@ Finally, two implementation subtleties deserve care. Phase kickback requires the
 Grover's algorithm, introduced by Lov Grover in 1996, is the canonical quantum routine for unstructured search: it finds a marked item among $N$ possibilities in $\mathcal{O}(\sqrt{N})$ oracle queries versus $\mathcal{O}(N)$ classically.[^grover-wiki][^ibm-grover] Unlike Shor's factoring algorithm, the speedup is only **quadratic, not exponential**, and this quadratic factor is provably optimal for a true black-box search.[^grover-wiki] The session's "inversion around the mean" picture is the standard textbook geometric description: the Grover iterate is a product of two reflections (oracle reflection $Z_f$, then the diffusion reflection about the uniform state), which composes to a rotation in a two-dimensional plane.[^azure-grover]
 
 The session stressed that stopping at the right moment is critical but did not give the closed form. The literature does: for $M$ marked items among $N$, the optimal number of iterations is
-$$N_{\text{optimal}} = \left\lfloor \frac{\pi}{4}\sqrt{\frac{N}{M}} - \frac{1}{2} \right\rfloor,$$
+$$
+N_{\text{optimal}} = \left\lfloor \frac{\pi}{4}\sqrt{\frac{N}{M}} - \frac{1}{2} \right\rfloor,
+$$
 and for a single marked item this is $\lfloor \frac{\pi}{4}\sqrt{N} \rfloor$.[^azure-grover][^iters-se] The full operator applied to the register is $\left(-H^{\otimes n} O_0 H^{\otimes n} O_f\right)^{N_{\text{optimal}}} H^{\otimes n}$, matching the session's $G = -H^{\otimes n} Z_0 H^{\otimes n} Z_f$ exactly.[^azure-grover] Two practical caveats from the wider literature reinforce the session's cautions: the success probability is *periodic* in the iteration count (over-rotation genuinely lowers it), and for the special case $N = 4$ a single iteration finds the answer with certainty.[^ibm-iters] One further engineering note worth flagging for the hackathon: the headline $\sqrt{N}$ advantage does **not** account for quantum error-correction overhead, which in fault-tolerant estimates can erode the effective speedup (sometimes described as closer to quartic in realistic regimes).[^quera-grover] Oracles also rely on **uncomputation** — the exact $U^\dagger$ cleanup the session showed — which roughly doubles the gate count but is required to avoid leftover entanglement with ancilla qubits.[^quera-grover]
 
 *[Research context]* The general Grover-for-Max-Cut approach the session sketched has been formalized: a 2023 arXiv result gives a quantum Max-Cut algorithm for arbitrary graphs with temporal complexity $\mathcal{O}(\sqrt{2^n})$ (and spatial complexity $\mathcal{O}(m^2)$ in edges), and argues this is optimal among oracle-based quantum algorithms for NP-complete problems — precisely the quadratic-speedup regime described in lecture.[^qmaxcut-arxiv]
